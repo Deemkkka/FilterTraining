@@ -43,7 +43,62 @@ namespace FilterTraining
 
             myListView.ItemsSource = Users;
 
-            FilterComboBox.ItemsSource = new string[] { "Name", "Country", "Status" };
+            //FilterComboBox.ItemsSource = new string[] { "Name", "Country", "Status" };
+
+            FilterComboBox.ItemsSource = typeof(User).GetProperties().Select((o) => o.Name);
+
+        }
+
+
+        public Predicate<object> GetFilter()
+        {
+            switch (FilterComboBox.SelectedItem as string)
+            {
+                case "Name":
+                    return NameFilter;
+                case "Country":
+                    return CountryFilter;
+                case "Status":
+                    return StatusName;                    
+            }
+            return NameFilter;
+        }
+
+        private bool NameFilter(object obj)
+        {
+            var FilterObj = obj as User;
+
+            return FilterObj.Name.Contains(FilterTextBox.Text, StringComparison.OrdinalIgnoreCase);
+        }
+
+        private bool CountryFilter(object obj)
+        {
+            var FilterObj = obj as User;
+            return FilterObj.Country.Contains(FilterTextBox.Text, StringComparison.OrdinalIgnoreCase);
+        }
+
+        private bool StatusName(object obj)
+        {
+            var FilterObj = obj as User;
+
+            return FilterObj.Status.Contains(FilterTextBox.Text, StringComparison.OrdinalIgnoreCase);
+        }
+
+        private void FilterTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (FilterTextBox.Text == null)
+            {
+                myListView.Items.Filter = null;
+            }
+            else
+            {
+                myListView.Items.Filter = GetFilter();
+            }
+        }
+
+        private void FilterComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            myListView.Items.Filter = GetFilter();
         }
     }
 }

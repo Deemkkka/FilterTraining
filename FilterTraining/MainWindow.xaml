@@ -22,12 +22,15 @@
         </ListView>
 
         <ComboBox Name="FilterComboBox" Width="200"
+                  SelectionChanged="FilterComboBox_SelectionChanged"
                   SelectedIndex="0"
                   HorizontalAlignment="Left"
                   VerticalAlignment="Top"
                   Margin="10, 30, 0, 0"/>
-        <TextBox x:Name="FilterTextBox" Width="200"
-                  HorizontalAlignment="Left"
+        <TextBox x:Name="FilterTextBox" 
+                 Width="200"
+                  TextChanged="FilterTextBox_TextChanged"
+                 HorizontalAlignment="Left"
                   VerticalAlignment="Top"
                   Margin="220, 30, 0, 0"/>
 
