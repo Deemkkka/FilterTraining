@@ -7,6 +7,25 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <ListView x:Name="myListView"
+                  Margin="0, 60, 0, 0">
+            <ListView.View>
+                <GridView>
+                    
+                </GridView>
+            </ListView.View>
+            
+        </ListView>
+
+        <ComboBox Name="FilterComboBox" Width="200"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Top"
+                  Margin="10, 30, 0, 0"/>
+        <TextBox x:Name="FilterTextBox" Width="200"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Top"
+                  Margin="220, 30, 0, 0"/>
+
 
     </Grid>
 </Window>
