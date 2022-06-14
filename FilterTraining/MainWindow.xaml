@@ -11,13 +11,18 @@
                   Margin="0, 60, 0, 0">
             <ListView.View>
                 <GridView>
-                    
+                    <GridView.Columns>
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="auto" />
+                        <GridViewColumn Header="Country" DisplayMemberBinding="{Binding Country}" Width="auto"/>
+                        <GridViewColumn Header="Status" DisplayMemberBinding="{Binding Status}" Width="auto"/>
+                    </GridView.Columns>
                 </GridView>
             </ListView.View>
             
         </ListView>
 
         <ComboBox Name="FilterComboBox" Width="200"
+                  SelectedIndex="0"
                   HorizontalAlignment="Left"
                   VerticalAlignment="Top"
                   Margin="10, 30, 0, 0"/>
